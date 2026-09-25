@@ -59,5 +59,15 @@ for f in $(find public -name '*.html'); do
   lacks "${f#public/}" '&[lrmn](squo|dquo|dash);|&hellip;'
 done
 
+# 3. Local Hugo must match the version pinned in the deploy workflow.
+wf=.github/workflows/hugo.yml
+if [ -f "$wf" ]; then
+  pinned=$(sed -n 's/^ *HUGO_VERSION: *//p' "$wf")
+  local_v=$(hugo version | sed -E 's/^hugo v([0-9.]+).*/\1/')
+  [ "$pinned" = "$local_v" ] || { echo "FAIL Hugo $local_v locally but $pinned in $wf"; fail=1; }
+else
+  echo "FAIL missing $wf"; fail=1
+fi
+
 if [ "$fail" -ne 0 ]; then echo "check-site: FAILED"; exit 1; fi
 echo "check-site: OK"
