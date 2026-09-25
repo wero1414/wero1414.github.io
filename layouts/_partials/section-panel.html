@@ -1,0 +1,15 @@
+{{- /* Context: dict "page" $ "section" (map with name, title) */ -}}
+{{- $sec := .section }}
+{{- $pages := where site.RegularPages "Section" $sec.name }}
+{{- $secPage := site.GetPage $sec.name }}
+<section class="panel" data-section="{{ $sec.name }}">
+  <h2>{{ partial "knobs.html" . }}<a href="{{ $secPage.RelPermalink }}">{{ $sec.title }}</a>
+    <a class="all" href="{{ $secPage.RelPermalink }}">{{ T "all_in" (dict "Count" (len $pages)) }}</a></h2>
+  {{ with first 4 $pages }}
+  <ul class="cards">
+    {{ range . }}{{ partial "card.html" . }}{{ end }}
+  </ul>
+  {{ else }}
+  <p class="muted">{{ T "nothing_yet" }}</p>
+  {{ end }}
+</section>

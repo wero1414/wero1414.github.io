@@ -1,0 +1,7 @@
+{{- /* Returns the URL an item should link to; errors if there is none. */ -}}
+{{- $url := .RelPermalink }}
+{{- with .Params.external_url }}{{ $url = . }}{{ end }}
+{{- if not $url }}
+  {{- errorf "%s has no page to link to: set external_url or remove build.render = never" .File.Path }}
+{{- end }}
+{{- return $url }}

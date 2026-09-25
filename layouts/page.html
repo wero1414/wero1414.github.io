@@ -1,10 +1,17 @@
 {{ define "main" }}
-<article>
+<article data-section="{{ .Section }}">
   <h1>{{ .Title }}</h1>
-  {{ if eq .Section "posts" }}
+  {{ if ne .Kind "page" }}{{ else if .Section }}
   <p class="meta">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+    {{ with .Params.event }} - {{ . }}{{ end }}
+    {{ with .Params.with }} - {{ T "with" }} {{ delimit . ", " }}{{ end }}
     {{ with .GetTerms "tags" }} - {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}{{ end }}
+  </p>
+  <p class="badges">{{ partial "badges.html" . }}
+    {{ with .Params.video }}<a class="badge link" href="{{ . }}">{{ T "video" }}</a>{{ end }}
+    {{ with .Params.slides }}<a class="badge link" href="{{ . }}">{{ T "slides" }}</a>{{ end }}
+    {{ with .Params.source }}<a class="badge link" href="{{ . }}">{{ T "source" }}</a>{{ end }}
   </p>
   {{ end }}
   {{ .Content }}

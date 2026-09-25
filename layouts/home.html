@@ -1,29 +1,6 @@
 {{ define "main" }}
-<section class="intro">
-  {{ .Content }}
-</section>
-
-<section>
-  <h2>{{ T "recent_posts" }}</h2>
-  {{ with first 5 (where site.RegularPages "Section" "posts") }}
-  <ul class="list">
-    {{ range . }}{{ partial "post-item.html" . }}{{ end }}
-  </ul>
-  {{ else }}
-  <p>{{ T "nothing_yet" }}</p>
-  {{ end }}
-  <p><a href="{{ "posts/" | relLangURL }}">{{ T "all_posts" }}</a></p>
-</section>
-
-<section>
-  <h2>{{ T "projects" }}</h2>
-  {{ with where (where site.RegularPages "Section" "projects") "Params.featured" true }}
-  <ul class="list projects">
-    {{ range . }}{{ partial "project-item.html" . }}{{ end }}
-  </ul>
-  {{ else }}
-  <p>{{ T "nothing_yet" }}</p>
-  {{ end }}
-  <p><a href="{{ "projects/" | relLangURL }}">{{ T "all_projects" }}</a></p>
-</section>
+{{ partial "hero.html" . }}
+{{ range site.Params.sections }}
+  {{ partial "section-panel.html" (dict "page" $ "section" .) }}
+{{ end }}
 {{ end }}

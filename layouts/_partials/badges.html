@@ -1,0 +1,6 @@
+{{- /* Small labels shown on cards and list items. */ -}}
+{{- with .Params.role }}<span class="badge">{{ . }}</span>{{ end }}
+{{- with .Params.status }}<span class="badge">{{ . }}</span>{{ end }}
+{{- with .Params.lang }}{{ if eq . "es" }}<span class="badge">es</span>{{ end }}{{ end }}
+{{- if .Params.external_url }}<span class="badge">{{ T "external" }}</span>{{ end }}
+{{- if eq .Params.confidence "medium" }}<span class="badge warn">{{ T "unconfirmed" }}</span>{{ end }}

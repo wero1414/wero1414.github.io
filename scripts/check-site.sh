@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Build the site and check the generated output. Exit 0 only if every check passes.
 set -euo pipefail
+export LC_ALL=C
 cd "$(dirname "$0")/.."
 
 fail=0
@@ -38,12 +39,19 @@ need posts/index.xml
 need posts/hello-world/index.html
 need posts/hello-world/publish-flow.svg
 need projects/index.html
+need talks/index.html
+need oss/index.html
+need fonts/Inter.woff2
+need fonts/JetBrainsMono.woff2
 need projects/this-site/index.html
 need about/index.html
 need tags/index.html
 need tags/meta/index.html
 
 absent projects/ear-training/index.html
+absent talks/index.xml
+absent oss/index.xml
+absent talks/blackhat-2025-arsenal-catsniffer/index.html
 absent posts/zz-check-draft/index.html
 absent posts/zz-check-future/index.html
 lacks index.xml 'zz (draft|future)'
@@ -55,13 +63,24 @@ has index.html 'href="?https://github.com/wero1414/ear-training'
 has projects/index.html 'href="?https://github.com/wero1414/ear-training'
 has projects/index.html 'href="?/projects/this-site/'
 has posts/hello-world/index.html 'src="?publish-flow.svg'
+has index.html 'data-section="?talks'
+has index.html 'data-section="?oss'
+has index.html 'data-section="?projects'
+has index.html 'data-section="?posts'
+has index.html 'href="?/fonts/JetBrainsMono.woff2'
+has talks/index.html 'class="?year"?>2024'
+has talks/index.html 'href="?https://ekoparty.org/trainings2024-bombercat'
+lacks talks/index.html 'blackhat|biobiochile'
+has oss/index.html 'href="?https://github.com/adafruit/TinyLoRa/pull/15'
 has index.xml 'https://wero1414.github.io/posts/hello-world/'
 lacks index.xml '<link/>|<guid/>|0001'
 lacks index.xml 'projects/this-site|/about/'
 absent projects/index.xml
 
-for f in $(find public -name '*.html'); do
+for f in $(find public -name '*.html' -o -name '*.css'); do
   lacks "${f#public/}" '&[lrmn](squo|dquo|dash);|&hellip;'
+  lacks "${f#public/}" 'fonts\.googleapis\.com|fonts\.gstatic\.com'
+  lacks "${f#public/}" "$(printf '\xe2\x80[\x93\x94\x98\x99\x9c\x9d\xa6]')"
 done
 
 # 3. Local Hugo must match the version pinned in the deploy workflow.

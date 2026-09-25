@@ -5,25 +5,51 @@ title = 'wero1414'
 enableRobotsTXT = true
 
 [params]
-  description = 'Personal projects, notes and experiments by wero1414.'
+  name = 'Eduardo "wero" Contreras'
+  description = 'Eduardo "wero" Contreras: hardware, radios, badges and pedals. Talks, open source and projects outside Electronic Cats.'
+  bio = 'Hardware hacker from Aguascalientes, MX. Firmware, RF, badges and the occasional noise box.'
   github = 'https://github.com/wero1414'
+  hackster = 'https://www.hackster.io/wero1414'
+  electroniccats = 'https://electroniccats.com/'
+
+  # Section order on the home page and in lists. Colours live in main.css.
+  [[params.sections]]
+    name = 'talks'
+    title = 'Talks'
+  [[params.sections]]
+    name = 'oss'
+    title = 'Open source'
+  [[params.sections]]
+    name = 'projects'
+    title = 'Projects'
+  [[params.sections]]
+    name = 'posts'
+    title = 'Posts'
 
 [taxonomies]
   tag = 'tags'
 
 [menus]
   [[menus.main]]
-    name = 'Posts'
-    pageRef = '/posts'
+    name = 'Talks'
+    pageRef = '/talks'
     weight = 10
+  [[menus.main]]
+    name = 'Open source'
+    pageRef = '/oss'
+    weight = 20
   [[menus.main]]
     name = 'Projects'
     pageRef = '/projects'
-    weight = 20
+    weight = 30
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 40
   [[menus.main]]
     name = 'About'
     pageRef = '/about'
-    weight = 30
+    weight = 50
 
 [markup.highlight]
   noClasses = false

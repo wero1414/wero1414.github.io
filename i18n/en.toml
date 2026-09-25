@@ -1,14 +1,18 @@
-[recent_posts]
-other = 'Recent posts'
-[all_posts]
-other = 'All posts'
-[projects]
-other = 'Projects'
-[all_projects]
-other = 'All projects'
+[all_in]
+other = 'all {{ .Count }}'
 [external]
 other = 'external'
 [tags]
 other = 'Tags'
 [nothing_yet]
 other = 'Nothing here yet.'
+[with]
+other = 'with'
+[video]
+other = 'video'
+[slides]
+other = 'slides'
+[source]
+other = 'source'
+[unconfirmed]
+other = 'unconfirmed'

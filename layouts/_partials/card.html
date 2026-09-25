@@ -1,0 +1,11 @@
+{{- $url := partial "item-link.html" . }}
+<li class="card" data-section="{{ .Section }}">
+  <a class="card-title" href="{{ $url }}">{{ .Title }}</a>
+  <p class="meta">
+    {{- with .Params.event }}{{ . }}{{ with $.Params.location }}, {{ . }}{{ end }} - {{ end }}
+    {{- with .Params.repo }}{{ . }}{{ with $.Params.ref }} {{ . }}{{ end }} - {{ end }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+  </p>
+  {{ with .Description }}<p class="desc">{{ . }}</p>{{ end }}
+  <p class="badges">{{ partial "badges.html" . }}</p>
+</li>

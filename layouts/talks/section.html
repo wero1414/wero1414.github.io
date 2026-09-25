@@ -2,9 +2,12 @@
 <h1 class="section-title" data-section="{{ .Section }}">{{ partial "knobs.html" . }}{{ .Title }}</h1>
 {{ .Content }}
 {{ with .Pages }}
+{{ range .GroupByDate "2006" }}
+<h2 class="year">{{ .Key }}</h2>
 <ul class="cards">
-  {{ range . }}{{ partial "card.html" . }}{{ end }}
+  {{ range .Pages }}{{ partial "card.html" . }}{{ end }}
 </ul>
+{{ end }}
 {{ else }}
 <p class="muted">{{ T "nothing_yet" }}</p>
 {{ end }}

@@ -1,12 +1,12 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
+<h1 class="section-title">{{ partial "knobs.html" . }}{{ .Title }}</h1>
 {{ with .Data.Terms.ByCount }}
-<ul class="list">
+<ul class="plain">
   {{ range . }}
   <li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ .Count }})</li>
   {{ end }}
 </ul>
 {{ else }}
-<p>{{ T "nothing_yet" }}</p>
+<p class="muted">{{ T "nothing_yet" }}</p>
 {{ end }}
 {{ end }}

@@ -1,8 +1,8 @@
-<nav class="nav">
-  <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+<nav class="nav" aria-label="Main">
+  <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}<span class="cursor" aria-hidden="true">_</span></a>
   <ul class="menu">
     {{ range site.Menus.main }}
-    <li><a href="{{ .URL }}"{{ if or ($.IsMenuCurrent .Menu .) ($.HasMenuCurrent .Menu .) }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+    <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent .Menu . }} aria-current="page"{{ else if $.HasMenuCurrent .Menu . }} aria-current="true"{{ end }}>{{ .Name }}</a></li>
     {{ end }}
   </ul>
 </nav>
