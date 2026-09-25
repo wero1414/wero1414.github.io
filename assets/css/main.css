@@ -38,11 +38,11 @@
     --line: #d9dbe6;
     --fg: #14151b;
     --muted: #5b6072;
-    --talks: #0b7fa8;
+    --talks: #0a779d;
     --oss: #c4157a;
-    --projects: #9a6b00;
-    --posts: #2f8f2a;
-    --warn: #9a6b00;
+    --projects: #936600;
+    --posts: #297f25;
+    --warn: #936600;
     color-scheme: light;
   }
 }

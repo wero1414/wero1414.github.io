@@ -67,6 +67,8 @@ has index.html 'data-section="?oss'
 has index.html 'data-section="?projects'
 has index.html 'data-section="?posts'
 has index.html 'href="?/fonts/JetBrainsMono.woff2'
+has posts/hello-world/index.html 'chroma-dark[^>]*media="?not all and \(prefers-color-scheme: ?light\)'
+has posts/hello-world/index.html 'chroma-light[^>]*media="?\(prefers-color-scheme: ?light\)'
 has talks/index.html 'class="?year"?>2024'
 has talks/index.html 'href="?https://ekoparty.org/trainings2024-bombercat'
 has talks/index.html 'blackhat|Black Hat'
@@ -82,7 +84,38 @@ for f in $(find public -name '*.html' -o -name '*.css'); do
   lacks "${f#public/}" "$(printf '\xe2\x80[\x93\x94\x98\x99\x9c\x9d\xa6]')"
 done
 
-# 3. Local Hugo must match the version pinned in the deploy workflow.
+# 3. Content rules: medium confidence must be draft; no author to-do notes on public cards.
+for f in $(find content -name '*.md'); do
+  if grep -q "^confidence: 'medium'" "$f" && ! grep -q '^draft: true' "$f"; then
+    echo "FAIL $f has confidence medium but is not draft: true"; fail=1
+  fi
+  if grep -Eiq '^description:.*(to confirm|update after|placeholder|TODO)' "$f"; then
+    echo "FAIL $f description carries an author note; move it to a YAML comment"; fail=1
+  fi
+done
+
+# 4. Light-mode accent colours must reach WCAG AA (4.5:1) on the page background.
+python3 - assets/css/main.css <<'PY' || fail=1
+import re, sys
+css = open(sys.argv[1]).read()
+light = re.search(r'prefers-color-scheme: light\) \{(.*?)\n\}', css, re.S).group(1)
+tok = dict(re.findall(r'--([a-z]+): (#[0-9a-fA-F]{6})', light))
+def lum(h):
+    c = [int(h[i:i+2], 16) / 255 for i in (1, 3, 5)]
+    c = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+def ratio(a, b):
+    la, lb = lum(a), lum(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+ok = True
+for name in ('talks', 'oss', 'projects', 'posts', 'muted', 'warn'):
+    r = ratio(tok[name], tok['bg'])
+    if r < 4.5:
+        print(f"FAIL light --{name} {tok[name]} on --bg {tok['bg']} is {r:.2f}:1, need 4.5:1"); ok = False
+sys.exit(0 if ok else 1)
+PY
+
+# 5. Local Hugo must match the version pinned in the deploy workflow.
 wf=.github/workflows/hugo.yml
 if [ -f "$wf" ]; then
   pinned=$(sed -n 's/^ *HUGO_VERSION: *//p' "$wf")

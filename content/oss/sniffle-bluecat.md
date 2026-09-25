@@ -1,6 +1,6 @@
 ---
 title: 'bluecat BLE toolkit and connection hijacking for Sniffle'
-date: '2026-07-01'
+date: '2026-07-21'
 description: 'Offensive BLE toolkit, connection hijacking firmware and CatSniffer V3 fixes.'
 repo: 'nccgroup/Sniffle'
 ref: 'PR #125'

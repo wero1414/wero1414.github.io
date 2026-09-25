@@ -1,6 +1,6 @@
 ---
 title: 'sx126x driver: (G)FSK support'
-date: '2026-02-01'
+date: '2026-02-26'
 description: 'FSK modulation for the Semtech sx126x LoRa driver. Reviewed, closed by the stale bot.'
 repo: 'zephyrproject-rtos/zephyr'
 ref: 'PR #104614'

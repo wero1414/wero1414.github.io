@@ -1,6 +1,6 @@
 ---
 title: 'CatWAN USB Stick variant for Meshtastic'
-date: '2026-04-01'
+date: '2026-04-10'
 description: 'RP2040 + RFM95W board variant.'
 repo: 'meshtastic/firmware'
 ref: 'PR #10130'

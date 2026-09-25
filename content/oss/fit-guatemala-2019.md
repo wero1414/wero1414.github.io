@@ -1,6 +1,6 @@
 ---
 title: 'Smart home workshop examples, FIT Guatemala 2019'
-date: '2019-10-01'
+date: '2019-10-25'
 description: 'Python and Arduino examples for the workshop board.'
 repo: 'FunPythonEC/FIT_Guatemala_2019-SMART_HOME'
 ref: 'PR #1'

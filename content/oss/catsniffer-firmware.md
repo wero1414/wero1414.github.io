@@ -1,7 +1,8 @@
 ---
 title: 'CatSniffer firmware and tools'
-date: '2023-01-01'
-description: 'Main committer on the CatSniffer firmware and host tools. Date is a placeholder.'
+date: '2023-12-31'
+description: 'Main committer on the CatSniffer firmware and host tools (CatSniffer-Firmware, CatSniffer-Tools).'
+# Ongoing work; dated to the end of the most active year.
 repo: 'ElectronicCats/CatSniffer-Firmware'
 ref: ''
 status: 'merged'

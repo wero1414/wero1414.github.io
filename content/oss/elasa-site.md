@@ -1,6 +1,6 @@
 ---
 title: 'Extras para los curiosos'
-date: '2024-10-01'
+date: '2024-10-18'
 description: 'Additions to the ELASA site.'
 repo: 'elasa-do/elasa-do.github.io'
 ref: 'PR #3'

@@ -1,7 +1,8 @@
 ---
 title: 'LiveCats: KiCad 6'
 date: '2022-01-31'
-description: 'What is new in KiCad 6, first hand. Exact date to confirm.'
+description: 'What is new in KiCad 6, first hand.'
+# Month known (January 2022), exact day not confirmed.
 event: 'Electronic Cats LiveCats'
 location: 'Online'
 role: 'host'

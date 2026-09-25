@@ -1,6 +1,6 @@
 ---
 title: 'CTF Router Badge PCB layout'
-date: '2026-06-01'
+date: '2026-06-17'
 description: 'Updated the CTF router badge PCB layout.'
 repo: 'p33p33/ctf-iot-lab'
 ref: 'PR #1'

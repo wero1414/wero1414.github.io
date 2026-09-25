@@ -1,6 +1,6 @@
 ---
 title: 'Hackea tu Badge de BugCon 2025'
-date: '2025-12-01'
+date: '2025-12-03'
 description: 'Two-part livestream on hacking the Linux-based BugCon 2025 badge.'
 event: 'Electronic Cats livestream'
 location: 'Online'

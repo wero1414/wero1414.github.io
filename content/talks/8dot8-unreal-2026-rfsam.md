@@ -1,7 +1,8 @@
 ---
 title: 'RFSAM: Radio Frequency Security Assessment Methodology'
 date: '2026-09-23'
-description: 'Upcoming, October 1-2, 2026: RF security research on Bluetooth, LoRaWAN and LTE, and the RFSAM methodology built with PWNLabs. Dated by the announcement; update after the talk.'
+description: 'October 1-2, 2026: RF security research on Bluetooth, LoRaWAN and LTE, and the RFSAM methodology built with PWNLabs.'
+# Dated by the announcement (2026-09-23). Set the talk date and add the video after the event.
 event: '8.8 Unreal 2026'
 location: 'Santiago, Chile'
 role: 'speaker'
