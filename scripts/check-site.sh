@@ -9,7 +9,7 @@ absent() { [ ! -e "public/$1" ] || { echo "FAIL should not exist: public/$1"; fa
 has()    { grep -Eq -- "$2" "public/$1" || { echo "FAIL public/$1 lacks: $2"; fail=1; }; }
 lacks()  { ! grep -Eq -- "$2" "public/$1" || { echo "FAIL public/$1 contains: $2"; fail=1; }; }
 
-build() { rm -rf public && hugo --gc --minify --panicOnWarning --quiet; }
+build() { rm -rf public && hugo --gc --minify --panicOnWarning >/dev/null; }
 
 # Temporary fixtures, always removed.
 draft=content/posts/zz-check-draft.md
@@ -19,8 +19,10 @@ trap 'rm -f "$draft" "$future" "$broken"' EXIT
 
 # 1. A project with no local page and no external_url must fail the build.
 printf -- "---\ntitle: 'zz broken'\ndate: '2020-01-01'\nbuild:\n  render: never\n---\n" > "$broken"
-if build >/dev/null 2>&1; then
+if out=$(build 2>&1); then
   echo "FAIL build passed with a project that has nothing to link to"; fail=1
+elif ! grep -q 'has no page to link to' <<<"$out"; then
+  echo "FAIL build failed without the expected message; output was:"; echo "$out"; fail=1
 fi
 rm -f "$broken"
 
@@ -54,6 +56,9 @@ has projects/index.html 'href="?https://github.com/wero1414/ear-training'
 has projects/index.html 'href="?/projects/this-site/'
 has posts/hello-world/index.html 'src="?publish-flow.svg'
 has index.xml 'https://wero1414.github.io/posts/hello-world/'
+lacks index.xml '<link/>|<guid/>|0001'
+lacks index.xml 'projects/this-site|/about/'
+absent projects/index.xml
 
 for f in $(find public -name '*.html'); do
   lacks "${f#public/}" '&[lrmn](squo|dquo|dash);|&hellip;'
