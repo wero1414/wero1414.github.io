@@ -51,7 +51,6 @@ need tags/meta/index.html
 absent projects/ear-training/index.html
 absent talks/index.xml
 absent oss/index.xml
-absent talks/blackhat-2025-arsenal-catsniffer/index.html
 absent posts/zz-check-draft/index.html
 absent posts/zz-check-future/index.html
 lacks index.xml 'zz (draft|future)'
@@ -70,7 +69,7 @@ has index.html 'data-section="?posts'
 has index.html 'href="?/fonts/JetBrainsMono.woff2'
 has talks/index.html 'class="?year"?>2024'
 has talks/index.html 'href="?https://ekoparty.org/trainings2024-bombercat'
-lacks talks/index.html 'blackhat'
+has talks/index.html 'blackhat|Black Hat'
 has oss/index.html 'href="?https://github.com/adafruit/TinyLoRa/pull/15'
 has index.xml 'https://wero1414.github.io/posts/hello-world/'
 lacks index.xml '<link/>|<guid/>|0001'

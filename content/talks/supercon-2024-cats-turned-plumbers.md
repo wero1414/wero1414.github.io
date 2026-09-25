@@ -7,10 +7,10 @@ location: 'Pasadena, CA'
 role: 'speaker'
 with: []
 lang: 'en'
-video: 'https://www.youtube.com/playlist?list=PL_tws4AXg7auPrOUdmFqkt2fVRyUwzGvE'
+video: 'https://www.youtube.com/watch?v=SJuAQ3Yy06U'
 source: 'https://hackaday.com/2024/09/25/2024-hackaday-superconference-speakers-round-two/'
 confidence: 'high'
-external_url: 'https://hackaday.com/2024/09/25/2024-hackaday-superconference-speakers-round-two/'
+external_url: 'https://www.youtube.com/watch?v=SJuAQ3Yy06U'
 build:
   render: never
 draft: false
