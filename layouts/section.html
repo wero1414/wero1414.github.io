@@ -1,0 +1,11 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+{{ with .Pages }}
+<ul class="list">
+  {{ range . }}{{ partial "post-item.html" . }}{{ end }}
+</ul>
+{{ else }}
+<p>{{ T "nothing_yet" }}</p>
+{{ end }}
+{{ end }}

@@ -1,0 +1,13 @@
+{{- $url := .RelPermalink }}
+{{- $external := false }}
+{{- with .Params.external_url }}
+  {{- $url = . }}
+  {{- $external = true }}
+{{- end }}
+{{- if not $url }}
+  {{- errorf "project %q has no page to link to: set external_url or remove build.render = never" .File.Path }}
+{{- end }}
+<li>
+  <a href="{{ $url }}">{{ .Title }}</a>{{ if $external }} <span class="badge">{{ T "external" }}</span>{{ end }}
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</li>

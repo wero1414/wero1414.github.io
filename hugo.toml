@@ -1,0 +1,32 @@
+baseURL = 'https://wero1414.github.io/'
+locale = 'en-US'
+defaultContentLanguage = 'en'
+title = 'wero1414'
+enableRobotsTXT = true
+
+[params]
+  description = 'Personal projects, notes and experiments by wero1414.'
+  github = 'https://github.com/wero1414'
+
+[taxonomies]
+  tag = 'tags'
+
+[menus]
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 10
+  [[menus.main]]
+    name = 'Projects'
+    pageRef = '/projects'
+    weight = 20
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 30
+
+[markup.highlight]
+  noClasses = false
+
+[markup.goldmark.extensions.typographer]
+  disable = true

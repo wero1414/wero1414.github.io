@@ -1,0 +1,14 @@
+[recent_posts]
+other = 'Recent posts'
+[all_posts]
+other = 'All posts'
+[projects]
+other = 'Projects'
+[all_projects]
+other = 'All projects'
+[external]
+other = 'external'
+[tags]
+other = 'Tags'
+[nothing_yet]
+other = 'Nothing here yet.'

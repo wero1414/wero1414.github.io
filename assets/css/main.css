@@ -1,0 +1,89 @@
+:root {
+  --bg: #fdfdfc;
+  --fg: #1d1d1f;
+  --muted: #6b6b70;
+  --accent: #0b62c4;
+  --border: #e3e3e6;
+  --code-bg: #f4f4f6;
+  --max: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111214;
+    --fg: #e6e6e9;
+    --muted: #9a9aa2;
+    --accent: #6cb0ff;
+    --border: #2a2b30;
+    --code-bg: #1a1b1f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.site-header, main, .site-footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title { font-weight: 700; color: var(--fg); text-decoration: none; }
+
+.menu { display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.menu a { color: var(--muted); text-decoration: none; }
+.menu a:hover, .menu a[aria-current="page"] { color: var(--fg); }
+
+a { color: var(--accent); }
+
+h1, h2, h3 { line-height: 1.25; }
+h1 { font-size: 1.9rem; margin-top: 2rem; }
+h2 { font-size: 1.3rem; margin-top: 2.5rem; }
+
+.list { margin: 0; padding: 0; list-style: none; }
+.list li { padding: 0.4rem 0; }
+.list time { display: inline-block; min-width: 7.5rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.list.projects p { margin: 0.2rem 0 0; color: var(--muted); }
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  color: var(--muted);
+}
+
+.meta { color: var(--muted); }
+
+img { max-width: 100%; height: auto; }
+
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+:not(pre) > code { background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 0.25rem; }
+pre { padding: 1rem; overflow-x: auto; border-radius: 0.4rem; line-height: 1.45; }
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}

@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ or .Description site.Params.description }}">
+{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+{{ end }}
+{{ $css := slice (resources.Get "css/main.css") (resources.Get "css/chroma-light.css") | resources.Concat "css/site.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ $dark := resources.Get "css/chroma-dark.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $dark.RelPermalink }}" integrity="{{ $dark.Data.Integrity }}" media="(prefers-color-scheme: dark)">
