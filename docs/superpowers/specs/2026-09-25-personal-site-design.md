@@ -19,10 +19,10 @@ Markdown file and pushing.
 | Deploy | GitHub Actions, official Pages flow (`actions/configure-pages`, `actions/upload-pages-artifact`, `actions/deploy-pages`), Pages source = "GitHub Actions" |
 | Hugo version | Pinned in the workflow to the same version installed locally |
 | Theme | Small custom theme inside the repo (`layouts/` + one CSS file), no JS, no submodules |
-| Language | Single language, English (`languageCode = "en"`). Readers use browser translation. Config and `i18n/en.toml` in place so generated translations (`post.es.md`) can be added later without restructuring |
+| Language | Single language, English (`locale = "en-US"`, `defaultContentLanguage = "en"`). Readers use browser translation. Config and `i18n/en.toml` in place so generated translations (`post.es.md`) can be added later without restructuring |
 
 Language note: user did not explicitly pick English vs Spanish. Default is
-English; switching is a one-line change to `languageCode` / `defaultContentLanguage`
+English; switching is a one-line change to `locale` / `defaultContentLanguage`
 plus the i18n file.
 
 ## Site structure
@@ -60,15 +60,20 @@ This replaces the generic external-link sample project.
 
 ## Theme
 
-Templates (under `layouts/`):
-- `_default/baseof.html` - HTML shell, `<html lang="{{ site.Language.LanguageCode }}">`, header, footer.
-- `index.html` - home.
-- `_default/list.html` - generic section/taxonomy list.
-- `_default/single.html` - post/page.
-- `projects/list.html` - project list honoring `external_url`.
-- `partials/header.html`, `partials/footer.html`, `partials/post-item.html`.
+Templates (under `layouts/`, Hugo >= 0.146 template structure, verified with
+`hugo new theme` on 0.166.0):
+- `baseof.html` - HTML shell, `<html lang="{{ site.Language.Locale }}">`, header, footer.
+- `home.html` - home.
+- `section.html`, `term.html` - post-style lists (date + title).
+- `taxonomy.html` - list of tags with counts.
+- `page.html` - post/page.
+- `projects/section.html` - project list honoring `external_url`.
+- `_partials/head.html`, `_partials/header.html`, `_partials/footer.html`,
+  `_partials/post-item.html`, `_partials/project-item.html`.
 
-Styling: one `assets/css/main.css`, processed with Hugo Pipes (minify + fingerprint).
+Styling: `assets/css/main.css` plus generated Chroma styles (`chroma-light.css`,
+`chroma-dark.css`), processed with Hugo Pipes (concat + minify + fingerprint).
+Goldmark typographer disabled so output stays plain ASCII (no smart quotes/dashes).
 Light/dark via `prefers-color-scheme`, readable on phones, code highlighting via
 Hugo's built-in Chroma with CSS classes.
 
@@ -85,7 +90,7 @@ Local:
 1. `hugo --gc --minify --panicOnWarning` exits 0.
 2. `public/` contains `index.html`, `posts/index.html`, `projects/index.html`,
    `about/index.html`, `index.xml`, the sample post page.
-3. `public/index.html` has `<html lang="en">`.
+3. `public/index.html` has `<html lang="en-US">` (minified: `lang=en-US`).
 4. External project: its link in `public/projects/index.html` is the external URL,
    and no `public/projects/<external-slug>/index.html` exists.
 
