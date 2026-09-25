@@ -38,6 +38,19 @@ plus the i18n file.
 - `/tags/` - Hugo default taxonomy pages.
 - `/index.xml` and `/posts/index.xml` - RSS (Hugo default).
 
+## Relation to other project sites
+
+Model: one main site (this repo) plus one GitHub Pages site per project repo.
+Each project repo (e.g. `wero1414/ear-training`) publishes its own Pages site,
+served by GitHub at `https://wero1414.github.io/<repo>/`. The main site links to
+them through `external_url`. Building each project's site is out of scope for
+this spec; each is its own project.
+
+Initial entry: `ear-training`. Its repo is currently empty with Pages not
+enabled, so its `external_url` points to `https://github.com/wero1414/ear-training`
+until its Pages site is live, then changes to `https://wero1414.github.io/ear-training/`.
+This replaces the generic external-link sample project.
+
 ## Content authoring
 
 - New post: `hugo new posts/<slug>/index.md` (page bundle, images next to it).
@@ -63,8 +76,8 @@ Interface strings in `i18n/en.toml`.
 
 ## Sample content
 
-- 1 sample post, 1 local sample project, 1 external-link sample project
-  (pointing to `https://github.com/wero1414`), about page. User may delete samples.
+- 1 sample post, 1 local sample project, the `ear-training` external-link
+  project (see above), about page. User may delete samples.
 
 ## Verification
 
