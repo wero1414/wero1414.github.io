@@ -7,6 +7,7 @@ location: 'Online'
 role: 'speaker'
 with: ['Andres Sabas']
 lang: 'es'
+cover: '/covers/dragonjar-2022-bombercat.jpg'
 video: 'https://www.youtube.com/watch?v=yrIi0JzlUNY'
 source: 'https://x.com/dragonjar/status/1567976625974943745'
 confidence: 'high'

@@ -8,6 +8,7 @@ location: 'Online'
 role: 'host'
 with: []
 lang: 'es'
+cover: '/covers/livecats-kicad-6.jpg'
 video: 'https://www.youtube.com/watch?v=2e7N5Ch6ZcY'
 source: 'https://www.youtube.com/watch?v=2e7N5Ch6ZcY'
 confidence: 'high'

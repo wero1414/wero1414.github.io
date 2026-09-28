@@ -7,6 +7,7 @@ location: 'Pasadena, CA'
 role: 'speaker'
 with: []
 lang: 'en'
+cover: '/covers/supercon-2024-cats-turned-plumbers.jpg'
 video: 'https://www.youtube.com/watch?v=SJuAQ3Yy06U'
 source: 'https://hackaday.com/2024/09/25/2024-hackaday-superconference-speakers-round-two/'
 confidence: 'high'

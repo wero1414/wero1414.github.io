@@ -7,6 +7,7 @@ location: 'Buenos Aires'
 role: 'speaker'
 with: ['Andres Sabas']
 lang: 'es'
+cover: '/covers/ekoparty-2022-bombercat.jpg'
 video: 'https://www.youtube.com/watch?v=rrdAU4BHipM'
 source: 'https://www.youtube.com/watch?v=rrdAU4BHipM'
 confidence: 'high'

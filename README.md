@@ -57,5 +57,7 @@ want on the dark theme (lines land on the light parts of the photo). Needs
 Pillow and Node >= 22.6.
 
 Talk cards use `cover:` from front matter, or a generated `static/covers/<slug>.svg`.
-Run `./scripts/gen-covers.sh` after adding a talk; it never overwrites existing files.
+After adding a talk run `./scripts/fetch-thumbs.sh` (YouTube thumbnail as cover, if
+the talk has a `video:` link) and then `./scripts/gen-covers.sh` (SVG cover for the
+rest). Neither overwrites existing files.
 Post cards use `cover:` or the first image in the post folder.

@@ -7,6 +7,7 @@ location: 'Buenos Aires'
 role: 'speaker'
 with: ['Andres Sabas']
 lang: 'es'
+cover: '/covers/ekoparty-2024-entendiendo-el-badge.jpg'
 video: 'https://www.youtube.com/watch?v=bRo-Cc6bkKE'
 source: 'https://www.youtube.com/watch?v=bRo-Cc6bkKE'
 confidence: 'high'

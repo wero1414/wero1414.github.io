@@ -7,6 +7,7 @@ location: 'Online'
 role: 'host'
 with: ['Luis Vela']
 lang: 'es'
+cover: '/covers/livecats-fpgas-2.jpg'
 video: 'https://www.youtube.com/watch?v=e1Hq3HQa8jY'
 source: 'https://www.youtube.com/watch?v=e1Hq3HQa8jY'
 confidence: 'high'
