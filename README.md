@@ -40,3 +40,17 @@ build:
 
 Builds the site and checks the output. CI runs the same script before deploying.
 Keep local Hugo at the version in `.github/workflows/hugo.yml`; the script checks it.
+
+## Portrait and covers
+
+The hero portrait is generated from a photo that is not committed:
+
+```sh
+python3 scripts/lowpoly.py Eduardo-Contreras.png static/images/portrait.jpg --crop 0.30 0.06 0.48 --points 1400
+```
+
+`--crop LEFT TOP SIDE` are fractions of the input image. Needs Pillow, numpy and scipy.
+
+Talk cards use `cover:` from front matter, or a generated `static/covers/<slug>.svg`.
+Run `./scripts/gen-covers.sh` after adding a talk; it never overwrites existing files.
+Post cards use `cover:` or the first image in the post folder.
