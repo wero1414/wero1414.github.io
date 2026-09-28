@@ -12,6 +12,9 @@ for f in content/talks/*.md; do
   [ "$slug" = "_index" ] && continue
   out="static/covers/$slug.svg"
   [ -e "$out" ] && continue
+  # A talk with its own cover (front matter or any static/covers/<slug>.*) needs no SVG.
+  grep -q '^cover:' "$f" && continue
+  ls "static/covers/$slug".* >/dev/null 2>&1 && continue
   event=$(sed -n "s/^event: '\(.*\)'$/\1/p" "$f" | head -1)
   year=$(sed -n "s/^date: '\([0-9]\{4\}\).*'$/\1/p" "$f" | head -1)
   role=$(sed -n "s/^role: '\(.*\)'.*$/\1/p" "$f" | head -1)
