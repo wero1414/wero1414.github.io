@@ -66,8 +66,8 @@ has index.html 'data-section="?talks'
 has index.html 'data-section="?oss'
 has index.html 'data-section="?projects'
 has index.html 'data-section="?posts'
-need images/portrait.jpg
-has index.html 'class="?portrait"? [^>]*src="?/images/portrait.jpg'
+need images/portrait.svg
+has index.html 'class="?portrait"? [^>]*src="?/images/portrait.svg'
 has index.html 'class="?cover"?[^>]*src="?/posts/hello-world/publish-flow.svg'
 has talks/index.html 'class="?cover"?[^>]*src="?/covers/supercon-2024-cats-turned-plumbers.svg'
 has index.html 'href="?/fonts/JetBrainsMono.woff2'

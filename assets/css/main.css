@@ -231,6 +231,7 @@ pre { padding: 1rem; overflow-x: auto; border-radius: 0.4rem; line-height: 1.45;
 /* Hero with portrait */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: center; }
 .portrait {
+  background: var(--bg);
   width: min(320px, 40vw);
   height: auto;
   border-radius: 0.6rem;

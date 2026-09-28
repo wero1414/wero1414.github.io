@@ -43,13 +43,18 @@ Keep local Hugo at the version in `.github/workflows/hugo.yml`; the script check
 
 ## Portrait and covers
 
-The hero portrait is generated from a photo that is not committed:
+The hero portrait is a single-line drawing made with PINTR
+(https://github.com/javierbyte/pintr, BSD-3-Clause; core vendored in
+`scripts/pintr/`) from a photo that is not committed:
 
 ```sh
-python3 scripts/lowpoly.py Eduardo-Contreras.png static/images/portrait.jpg --crop 0.30 0.06 0.48 --points 1400
+python3 scripts/pintr.py Eduardo-Contreras.png static/images/portrait.svg \
+  --crop 0.30 0.06 0.48 --invert --lines 4000 --definition 70 --contrast 55
 ```
 
-`--crop LEFT TOP SIDE` are fractions of the input image. Needs Pillow, numpy and scipy.
+`--crop LEFT TOP SIDE` are fractions of the input image; `--invert` is what you
+want on the dark theme (lines land on the light parts of the photo). Needs
+Pillow and Node >= 22.6.
 
 Talk cards use `cover:` from front matter, or a generated `static/covers/<slug>.svg`.
 Run `./scripts/gen-covers.sh` after adding a talk; it never overwrites existing files.
