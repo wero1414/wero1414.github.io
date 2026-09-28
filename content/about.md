@@ -12,3 +12,9 @@ learning to hear intervals.
 - GitHub: [wero1414](https://github.com/wero1414)
 - Hackster: [wero1414](https://www.hackster.io/wero1414)
 - X: [@ForeverWero](https://x.com/ForeverWero)
+
+## Credits
+
+The line-drawing portrait on the home page was made with [PINTR](https://github.com/javierbyte/pintr),
+the single-line illustration algorithm by [Javier Borquez](https://javier.xyz/) (BSD-3-Clause).
+Thanks, Javier.

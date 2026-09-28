@@ -49,7 +49,7 @@ The hero portrait is a single-line drawing made with PINTR
 
 ```sh
 python3 scripts/pintr.py Eduardo-Contreras.png static/images/portrait.svg \
-  --crop 0.30 0.06 0.48 --invert --lines 4000 --definition 70 --contrast 55
+  --crop 0.30 0.06 0.48 --invert --lines 6000 --definition 100 --contrast 75
 ```
 
 `--crop LEFT TOP SIDE` are fractions of the input image; `--invert` is what you
