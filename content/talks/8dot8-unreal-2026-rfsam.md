@@ -1,7 +1,7 @@
 ---
-title: 'RFSAM: Radio Frequency Security Assessment Methodology'
+title: 'Demodus Operandi: como tres RF-hacks en tres bandas terminaron siendo una metodologia (keynote)'
 date: '2026-09-23'
-description: 'October 1-2, 2026: RF security research on Bluetooth, LoRaWAN and LTE, and the RFSAM methodology built with PWNLabs.'
+description: 'Keynote, October 1-2, 2026: three RF investigations (BLE, LoRaWAN, LTE) and RFSAM, the open RF security assessment methodology they led to.'
 # Dated by the announcement (2026-09-23). Set the talk date and add the video after the event.
 event: '8.8 Unreal 2026'
 location: 'Santiago, Chile'
