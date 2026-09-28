@@ -3,3 +3,6 @@ resources/_gen/
 .hugo_build.lock
 .superpowers/
 .research/
+Eduardo-Contreras.png
+photo.*
+.DS_Store

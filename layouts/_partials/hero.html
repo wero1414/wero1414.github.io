@@ -1,12 +1,15 @@
 <section class="hero">
-  <p class="eyebrow">// {{ site.Title }}</p>
-  <h1>{{ replace site.Params.name `"wero"` `<span class="nick">"wero"</span>` | safeHTML }}</h1>
-  <p class="bio">{{ site.Params.bio }}</p>
-  <p class="links">
-    <a href="{{ site.Params.github }}">GitHub</a>
-    <a href="{{ site.Params.hackster }}">Hackster</a>
-    <a href="{{ site.Params.electroniccats }}">Electronic Cats</a>
-    <a href="{{ "index.xml" | relLangURL }}">RSS</a>
-  </p>
-  {{ partial "waveform.html" . }}
+  <div class="hero-text">
+    <p class="eyebrow">// {{ site.Title }}</p>
+    <h1>{{ replace (site.Params.name | htmlEscape) `&#34;wero&#34;` `<span class="nick">"wero"</span>` | safeHTML }}</h1>
+    <p class="bio">{{ site.Params.bio }}</p>
+    <p class="links">
+      <a href="{{ site.Params.github }}">GitHub</a>
+      <a href="{{ site.Params.hackster }}">Hackster</a>
+      <a href="{{ site.Params.electroniccats }}">Electronic Cats</a>
+      <a href="{{ "index.xml" | relLangURL }}">RSS</a>
+    </p>
+    {{ partial "waveform.html" . }}
+  </div>
+  <img class="portrait" src="/images/portrait.jpg" alt="Low-poly portrait of {{ site.Params.name }}" width="400" height="400" loading="eager" decoding="async">
 </section>

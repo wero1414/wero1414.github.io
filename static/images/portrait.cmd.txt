@@ -1,0 +1,1 @@
+python3 scripts/lowpoly.py Eduardo-Contreras.png static/images/portrait.jpg --crop 0.30 0.06 0.48 --points 1400

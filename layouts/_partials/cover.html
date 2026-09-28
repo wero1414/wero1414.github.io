@@ -1,0 +1,16 @@
+{{- /* Cover image for a card. Posts: `cover` front matter or the first image
+     in the page bundle. Talks: `cover` front matter or a generated SVG in
+     static/covers/<slug>.svg (see scripts/gen-covers.sh). Others: none. */ -}}
+{{- $src := "" }}
+{{- with .Params.cover }}{{ $src = . }}{{ end }}
+{{- if not $src }}
+  {{- if eq .Section "posts" }}
+    {{- with .Resources.ByType "image" }}{{ $src = (index . 0).RelPermalink }}{{ end }}
+  {{- else if eq .Section "talks" }}
+    {{- $file := printf "covers/%s.svg" .File.ContentBaseName }}
+    {{- if fileExists (printf "static/%s" $file) }}{{ $src = printf "/%s" $file }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- with $src }}
+<img class="cover" src="{{ . }}" alt="" width="640" height="360" loading="lazy" decoding="async">
+{{- end }}

@@ -66,6 +66,10 @@ has index.html 'data-section="?talks'
 has index.html 'data-section="?oss'
 has index.html 'data-section="?projects'
 has index.html 'data-section="?posts'
+need images/portrait.jpg
+has index.html 'class="?portrait"? [^>]*src="?/images/portrait.jpg'
+has index.html 'class="?cover"?[^>]*src="?/posts/hello-world/publish-flow.svg'
+has talks/index.html 'class="?cover"?[^>]*src="?/covers/supercon-2024-cats-turned-plumbers.svg'
 has index.html 'href="?/fonts/JetBrainsMono.woff2'
 has posts/hello-world/index.html 'chroma-dark[^>]*media="?not all and \(prefers-color-scheme: ?light\)'
 has posts/hello-world/index.html 'chroma-light[^>]*media="?\(prefers-color-scheme: ?light\)'
@@ -81,6 +85,7 @@ absent projects/index.xml
 for f in $(find public -name '*.html' -o -name '*.css'); do
   lacks "${f#public/}" '&[lrmn](squo|dquo|dash);|&hellip;'
   lacks "${f#public/}" 'fonts\.googleapis\.com|fonts\.gstatic\.com'
+  lacks "${f#public/}" '<img[^>]*src="?https?://'
   lacks "${f#public/}" "$(printf '\xe2\x80[\x93\x94\x98\x99\x9c\x9d\xa6]')"
 done
 

@@ -1,11 +1,15 @@
 {{- $url := partial "item-link.html" . }}
 <li class="card" data-section="{{ .Section }}">
-  <a class="card-title" href="{{ $url }}">{{ .Title }}</a>
-  <p class="meta">
-    {{- with .Params.event }}{{ . }}{{ with $.Params.location }}, {{ . }}{{ end }} - {{ end }}
-    {{- with .Params.repo }}{{ . }}{{ with $.Params.ref }} {{ . }}{{ end }} - {{ end }}
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
-  </p>
-  {{ with .Description }}<p class="desc">{{ . }}</p>{{ end }}
-  <p class="badges">{{ partial "badges.html" . }}</p>
+  {{ partial "cover.html" . }}
+  <div class="card-body">
+    <p class="meta">
+      {{- with .Params.event }}{{ . }} - {{ end }}
+      {{- with .Params.repo }}{{ . }}{{ with $.Params.ref }} {{ . }}{{ end }} - {{ end }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+      {{- if eq .Section "posts" }} - {{ .ReadingTime }} min{{ end }}
+    </p>
+    <a class="card-title" href="{{ $url }}">{{ .Title }}</a>
+    {{ with .Description }}<p class="desc">{{ . }}</p>{{ else }}{{ if eq .Section "posts" }}<p class="desc">{{ .Summary | plainify | truncate 140 "..." }}</p>{{ end }}{{ end }}
+    <p class="badges">{{ partial "badges.html" . }}</p>
+  </div>
 </li>
